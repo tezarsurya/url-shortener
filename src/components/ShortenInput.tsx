@@ -58,9 +58,11 @@ const ShortenInput = () => {
         ...current,
         invalid: true,
         message:
-          error.response.status === 400
+          error.code === "ERR_NETWORK"
+            ? "Network error, please check your connection"
+            : error.code === "ERR_BAD_REQUEST"
             ? "Please enter a valid and accessible URL"
-            : error.message,
+            : "Error occured at our end, please try again later",
       }));
     } finally {
       setIsLoading(false);
