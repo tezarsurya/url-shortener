@@ -1,27 +1,79 @@
-import { FormEvent, useState } from "react";
+import { useAtom } from "jotai";
+import { FormEvent, useEffect, useState } from "react";
+import { urlAtom } from "../lib/jotai/atoms";
+import axios from "axios";
+import Spinner from "./utils/Spinner";
 
 const ShortenInput = () => {
   const [{ invalid, message }, setValidation] = useState({
     invalid: false,
     message: null || "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [urls, setUrls] = useAtom(urlAtom);
+
+  const shortenUrl = async (url: string) => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get(
+        `https://api.shrtco.de/v2/shorten?url=${url}`
+      );
+      const { result } = response.data;
+      setUrls((current) => {
+        if (current.length === 3)
+          return [
+            {
+              originalUrl: result.original_link,
+              shortUrl: result.short_link,
+              fullShortUrl: result.full_short_link,
+            },
+            ...current.slice(0, 2),
+          ];
+
+        return [
+          {
+            originalUrl: result.original_link,
+            shortUrl: result.short_link,
+            fullShortUrl: result.full_short_link,
+          },
+          ...current,
+        ];
+      });
+    } catch (error: any) {
+      setValidation((current) => ({
+        ...current,
+        invalid: true,
+        message:
+          error.response.status === 400
+            ? "Please enter a valid and accessible URL"
+            : error.message,
+      }));
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const data = new FormData(e.currentTarget);
+    const submittedUrl = data.get("url");
 
-    if (!data.get("url") || data.get("url") == "") {
+    if (!submittedUrl || submittedUrl == "") {
       setValidation((current) => ({
         ...current,
         invalid: true,
         message: "Please enter a URL",
       }));
     }
+
+    if (submittedUrl && submittedUrl != "") {
+      shortenUrl(submittedUrl.toString());
+    }
   };
 
   return (
-    <div className="absolute -bottom-64 w-full px-6 py-8 md:-bottom-40 md:px-10 lg:px-28 xl:-bottom-72 xl:px-40 xl:py-20">
+    <div className="absolute -bottom-52 w-full px-6 md:-bottom-32 md:px-10 lg:px-28 xl:-bottom-52 xl:px-40">
       <form
         onSubmit={handleSubmit}
         className={`${
@@ -55,9 +107,9 @@ const ShortenInput = () => {
         </div>
         <button
           type="submit"
-          className="w-full rounded-lg bg-[#2acfcf] px-8 py-4 text-xl font-bold text-white md:col-span-2 xl:col-span-3"
+          className="grid w-full place-items-center rounded-lg bg-[#2acfcf] px-8 py-4 text-center text-xl font-bold text-white md:col-span-2 xl:col-span-3"
         >
-          Shorten It!
+          {isLoading ? <Spinner /> : "Shorten It!"}
         </button>
       </form>
     </div>
