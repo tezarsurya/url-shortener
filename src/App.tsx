@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen w-full pt-24 pb-6">
+      <main className="min-h-screen w-full pt-24">
         <Hero />
         <Features />
       </main>
