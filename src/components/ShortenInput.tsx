@@ -3,6 +3,10 @@ import { FormEvent, useEffect, useState } from "react";
 import { urlAtom } from "../lib/jotai/atoms";
 import axios from "axios";
 import Spinner from "./utils/Spinner";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const ShortenInput = () => {
   const [{ invalid, message }, setValidation] = useState({
@@ -38,6 +42,16 @@ const ShortenInput = () => {
           },
           ...current,
         ];
+      });
+
+      MySwal.fire({
+        title: "Short link created",
+        icon: "success",
+        buttonsStyling: false,
+        customClass: {
+          confirmButton:
+            "rounded-lg bg-[#2acfcf] px-8 py-4 text-center text-xl font-bold text-white",
+        },
       });
     } catch (error: any) {
       setValidation((current) => ({
