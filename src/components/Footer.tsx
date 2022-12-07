@@ -13,7 +13,7 @@ interface FooterLinkContainerProps {
 
 const FooterLinkContainer = ({ children, title }: FooterLinkContainerProps) => (
   <div className="grid w-full place-items-center gap-y-2 md:col-span-2 md:items-start">
-    <h4 className="mb-3 w-full text-lg font-bold text-white md:text-left">
+    <h4 className="mb-3 w-full text-center text-lg font-bold text-white md:text-left">
       {title}
     </h4>
     {children}
@@ -23,7 +23,7 @@ const FooterLinkContainer = ({ children, title }: FooterLinkContainerProps) => (
 const FooterLink = ({ href, text }: FooterLinkProps) => (
   <a
     href={href}
-    className="btn w-full font-bold text-[#9e9aa7] hover:text-[#2acfcf] md:text-left"
+    className="btn w-full text-center font-bold text-[#9e9aa7] hover:text-[#2acfcf] md:text-left"
   >
     {text}
   </a>
