@@ -15,7 +15,7 @@ const NavLink = ({ href, text }: NavlinkProps) => (
 
 const Navbar = () => {
   return (
-    <nav className="flex w-full items-center justify-between bg-white/60 px-6 pt-8 pb-4 shadow-lg shadow-gray-200/30 backdrop-blur-xl md:px-10 lg:space-x-8 lg:px-28 xl:px-40">
+    <nav className="flex w-full items-center justify-between bg-white/60 px-6 pt-8 pb-4 backdrop-blur-xl md:px-10 lg:space-x-8 lg:px-28 xl:px-40">
       <a href="/">
         <img src={logo} width={121} height={33} alt="Shortly Logo" />
       </a>
