@@ -76,8 +76,10 @@ const LinkCard = ({
         <button
           onClick={handleClick}
           className={`${
-            copied ? "bg-[#3b3054]" : "bg-[#2acfcf]"
-          } grid w-full place-items-center rounded-lg px-8 py-2 text-center text-lg font-bold text-white md:w-fit md:px-4 md:text-base`}
+            copied
+              ? "bg-[#3b3054] hover:bg-[rgba(59,48,84,80%)]"
+              : "bg-[#2acfcf]"
+          } btn grid w-full place-items-center rounded-lg px-8 py-2 text-center text-lg font-bold text-white hover:bg-[rgba(42,207,207,80%)] md:w-fit md:px-4 md:text-base`}
         >
           {copied ? "Copied!" : "Copy"}
         </button>

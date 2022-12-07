@@ -7,3 +7,9 @@
     font-family: "Poppins", "sans-serif";
   }
 }
+
+@layer components {
+  .btn {
+    @apply transition-colors duration-150 ease-linear;
+  }
+}

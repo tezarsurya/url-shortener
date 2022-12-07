@@ -23,7 +23,7 @@ const Hero = () => {
             links are performing
           </p>
           <div className="grid w-full place-items-center py-8 md:place-items-start">
-            <button className="rounded-full bg-[#2acfcf] px-8 py-3 text-lg font-bold text-white">
+            <button className="btn rounded-full bg-[#2acfcf] px-8 py-3 text-lg font-bold text-white hover:bg-[rgba(42,207,207,80%)]">
               Get Started
             </button>
           </div>
