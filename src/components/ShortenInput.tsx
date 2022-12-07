@@ -58,9 +58,11 @@ const ShortenInput = () => {
         ...current,
         invalid: true,
         message:
-          error.response.status === 400
+          error.code === "ERR_NETWORK"
+            ? "Network error, please check your connection"
+            : error.code === "ERR_BAD_REQUEST"
             ? "Please enter a valid and accessible URL"
-            : error.message,
+            : "Error occured at our end, please try again later",
       }));
     } finally {
       setIsLoading(false);
@@ -84,6 +86,8 @@ const ShortenInput = () => {
     if (submittedUrl && submittedUrl != "") {
       shortenUrl(submittedUrl.toString());
     }
+
+    e.currentTarget.reset();
   };
 
   return (
@@ -91,8 +95,8 @@ const ShortenInput = () => {
       <form
         onSubmit={handleSubmit}
         className={`${
-          invalid ? "md:pb-10" : null
-        } group relative isolate grid w-full gap-6 overflow-hidden rounded-xl bg-[#3b3054] p-7 before:absolute before:bottom-0 before:left-24 before:-top-14 before:-right-20 before:-z-10 before:bg-[url('/src/assets/bg-shorten-mobile.svg')] before:bg-contain before:bg-right-top before:bg-no-repeat md:grid-cols-6 md:gap-4 md:before:inset-0 md:before:bg-[url('/src/assets/bg-shorten-desktop.svg')] md:before:bg-cover md:before:bg-left-bottom md:invalid:pb-10 lg:py-8 lg:px-12 xl:grid-cols-12 xl:px-12 xl:py-10 xl:invalid:pb-10`}
+          invalid ? "md:pb-10 lg:pb-10" : null
+        } group relative isolate grid w-full gap-6 overflow-hidden rounded-xl bg-[#3b3054] p-7 before:absolute before:bottom-0 before:left-24 before:-top-14 before:-right-20 before:-z-10 before:bg-[url('/src/assets/bg-shorten-mobile.svg')] before:bg-contain before:bg-right-top before:bg-no-repeat md:grid-cols-6 md:gap-4 md:before:inset-0 md:before:bg-[url('/src/assets/bg-shorten-desktop.svg')] md:before:bg-cover md:before:bg-left-bottom md:invalid:pb-10 lg:py-8 lg:px-10 xl:grid-cols-12 xl:py-10`}
       >
         <div
           className={`${
@@ -109,19 +113,19 @@ const ShortenInput = () => {
             }
             className={`${
               invalid ? "ring-2 ring-red-500" : "ring-[#2acfcf]"
-            } w-full rounded-lg px-6 py-4 text-lg outline-none focus:ring-2 group-invalid:ring-red-500`}
+            } w-full rounded-lg px-6 py-3 text-lg font-medium text-[#35323e] outline-none focus:ring-2 group-invalid:ring-red-500`}
           />
           <span
             className={`${
               invalid ? "visible" : "invisible"
-            } absolute -bottom-7 origin-top-left text-red-500 group-invalid:visible`}
+            } absolute -bottom-7 origin-top-left text-xs text-red-500 group-invalid:visible md:text-sm`}
           >
             {invalid ? message : "Please enter a valid URL"}
           </span>
         </div>
         <button
           type="submit"
-          className="grid w-full place-items-center rounded-lg bg-[#2acfcf] px-8 py-4 text-center text-xl font-bold text-white md:col-span-2 xl:col-span-3"
+          className="grid w-full place-items-center rounded-lg bg-[#2acfcf] px-8 py-3 text-center text-xl font-bold text-white md:col-span-2 xl:col-span-3"
         >
           {isLoading ? <Spinner /> : "Shorten It!"}
         </button>

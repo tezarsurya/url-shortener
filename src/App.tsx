@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Boost from "./components/Boost";
 import Features from "./components/Features";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
@@ -9,9 +10,10 @@ function App() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen w-full pt-24 pb-6">
+      <main className="min-h-screen w-full pt-24">
         <Hero />
         <Features />
+        <Boost />
       </main>
     </>
   );

@@ -1,7 +1,7 @@
-import { MouseEvent, TouchEvent, useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-export interface LinkCardProp {
+interface LinkCardProps {
   links: {
     originalUrl: string;
     shortUrl: string;
@@ -17,7 +17,7 @@ const LinkCard = ({
     shortUrl: "",
     fullShortUrl: "",
   },
-}: LinkCardProp) => {
+}: LinkCardProps) => {
   const { originalUrl, shortUrl, fullShortUrl } = links;
   const [copied, setCopied] = useState(false);
 
@@ -61,7 +61,9 @@ const LinkCard = ({
   return (
     <div className="grid w-full divide-y rounded-lg bg-white md:grid-cols-12">
       <div className="grid w-full place-items-center justify-start overflow-hidden p-4 md:col-span-8">
-        <p className="overflow-hidden text-ellipsis break-all">{originalUrl}</p>
+        <p className="overflow-hidden text-ellipsis break-all text-[#35323e]">
+          {originalUrl}
+        </p>
       </div>
       <div className="flex w-full flex-col gap-y-3 p-4 md:col-span-4 md:flex-row md:items-center md:justify-end md:gap-x-3">
         <a
@@ -75,7 +77,7 @@ const LinkCard = ({
           onClick={handleClick}
           className={`${
             copied ? "bg-[#3b3054]" : "bg-[#2acfcf]"
-          } grid w-full place-items-center rounded-lg px-8 py-3 text-center text-xl font-bold text-white md:w-fit md:px-4 md:text-base`}
+          } grid w-full place-items-center rounded-lg px-8 py-2 text-center text-lg font-bold text-white md:w-fit md:px-4 md:text-base`}
         >
           {copied ? "Copied!" : "Copy"}
         </button>
