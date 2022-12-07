@@ -7,7 +7,7 @@ const Boost = () => {
       <h1 className="text-center text-2xl font-bold text-white lg:text-3xl">
         Boost your links today
       </h1>
-      <button className="rounded-full bg-[#2acfcf] px-8 py-3 text-lg font-bold text-white">
+      <button className="btn rounded-full bg-[#2acfcf] px-8 py-3 text-lg font-bold text-white hover:bg-cyan-300/80">
         Get Started
       </button>
     </section>

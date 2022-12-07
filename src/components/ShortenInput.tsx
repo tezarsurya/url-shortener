@@ -125,7 +125,7 @@ const ShortenInput = () => {
         </div>
         <button
           type="submit"
-          className="grid w-full place-items-center rounded-lg bg-[#2acfcf] px-8 py-3 text-center text-xl font-bold text-white md:col-span-2 xl:col-span-3"
+          className="btn grid w-full place-items-center rounded-lg bg-[#2acfcf] px-8 py-3 text-center text-xl font-bold text-white hover:bg-cyan-300/80 md:col-span-2 xl:col-span-3"
         >
           {isLoading ? <Spinner /> : "Shorten It!"}
         </button>
