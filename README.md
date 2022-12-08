@@ -28,11 +28,17 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+<img src="./screenshots/desktop-1.png" alt="desktop-1" width="640" />
+<img src="./screenshots/desktop-2.png" alt="desktop-2" width="640" />
+<img src="./screenshots/desktop-3.png" alt="desktop-3" width="640" />
+<img src="./screenshots/desktop-4.png" alt="desktop-4" width="640" />
+<img src="./screenshots/mobile-1.png" alt="mobile-1" width="320" />
+<img src="./screenshots/mobile-2.png" alt="mobile-2" width="320" />
+<img src="./screenshots/mobile-nav.png" alt="mobile-nav" width="320" />
 
 ### Links
 
-- Solution URL: [My Solution](https://your-solution-url.com)
+- Solution URL: [My Solution](https://www.frontendmentor.io/solutions/url-shortening-api-landing-page-fo3m3PbALQ)
 - Live Site URL: [url-shortener-nu-six.vercel.app](https://url-shortener-nu-six.vercel.app/)
 
 ## My process
