@@ -32,7 +32,7 @@ const FooterLink = ({ href, text }: FooterLinkProps) => (
 const Footer = () => {
   return (
     <footer className="grid w-full place-items-center gap-y-10 bg-[#35323e] px-6 py-16 md:grid-cols-10 md:items-start md:gap-x-4 lg:px-28 xl:grid-cols-12 xl:px-40">
-      <div className="grid w-full place-items-center md:col-span-2 xl:col-span-4 xl:justify-start">
+      <div className="grid w-full place-items-center md:col-span-2 md:justify-start xl:col-span-4">
         <img src={logo} alt="Shotly logo" width={121} height={33} />
       </div>
       <FooterLinkContainer title="Features">
@@ -51,7 +51,7 @@ const Footer = () => {
         <FooterLink href="#" text="Careers" />
         <FooterLink href="#" text="Contact" />
       </FooterLinkContainer>
-      <div className="grid w-fit grid-flow-col place-items-center gap-x-6 md:col-span-2 md:gap-x-2">
+      <div className="grid w-fit grid-flow-col place-items-center gap-x-6 md:col-span-2 md:gap-x-2 lg:w-full lg:justify-end">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

@@ -4,7 +4,7 @@ import ShortenInput from "./ShortenInput";
 const Hero = () => {
   return (
     <section id="hero" className="relative grid w-full">
-      <div className="relative grid w-full overflow-hidden md:flex md:flex-row-reverse md:items-center md:justify-between md:py-20 md:px-10 lg:px-28 xl:px-40">
+      <div className="relative grid w-full overflow-hidden pt-16 md:flex md:flex-row-reverse md:items-center md:justify-between md:py-20 md:px-10 md:pt-32 lg:px-28 xl:px-40 xl:pt-40">
         <div className="grid place-items-center">
           <img
             src={heroImg}
